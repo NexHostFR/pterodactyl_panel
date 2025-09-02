@@ -13,7 +13,11 @@ export default function AppShellLogin({ children }: Props) {
                 style={{ backgroundImage: "url('/assets/img/foret.jpg')" }}
             >
                 <div className='text-center'>
-                    <h2 className='mt-6 text-2xl font-bold text-gray-200'><a href="https://nxtransfert.com" target='_blank'>Découvrez NxTransfer</a></h2>
+                    <h2 className='mt-6 text-2xl font-bold text-gray-200'>
+                        <a href='https://nxtransfert.com' target='_blank' rel='noreferrer'>
+                            Découvrez NxTransfer
+                        </a>
+                    </h2>
                     <p className='mt-2 text-gray-300'>Transférez vos fichiers rapidement et en toute sécurité 🚀</p>
                 </div>
             </div>

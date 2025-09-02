@@ -9,6 +9,8 @@
       "dom"
     ],
     "strict": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "noEmit": true,
     "sourceMap": true,
     "noImplicitReturns": true,
@@ -35,7 +37,8 @@
       }
     ],
     "typeRoots": [
-      "node_modules/@types"
+      "node_modules/@types",
+      "node_modules"
     ]
   },
   "include": [
