@@ -10,7 +10,7 @@ storage/framework/*
 /nbproject
 /.direnv
 
-node_modules
+/node_modules
 *.log
 _ide_helper.php
 _ide_helper_models.php
