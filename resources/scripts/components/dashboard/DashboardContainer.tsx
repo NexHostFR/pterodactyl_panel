@@ -74,8 +74,8 @@ export default () => {
                         ) : (
                             <p css={tw`text-center text-sm text-neutral-400`}>
                                 {showOnlyAdmin
-                                    ? 'There are no other servers to display.'
-                                    : 'There are no servers associated with your account.'}
+                                    ? "Il n'y a pas d'autres serveurs à afficher."
+                                    : "Il n'y a aucun serveur associé à votre compte."}
                             </p>
                         )
                     }

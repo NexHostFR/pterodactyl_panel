@@ -37,7 +37,7 @@ export default () => {
     }, []);
 
     return (
-        <ServerContentBlock title={'Databases'}>
+        <ServerContentBlock title={'Base de donnée'}>
             <FlashMessageRender byKey={'databases'} css={tw`mb-4`} />
             {!databases.length && loading ? (
                 <Spinner size={'large'} centered />
@@ -55,8 +55,8 @@ export default () => {
                         ) : (
                             <p css={tw`text-center text-sm text-neutral-300`}>
                                 {databaseLimit > 0
-                                    ? 'It looks like you have no databases.'
-                                    : 'Databases cannot be created for this server.'}
+                                    ? "Il semble que vous n'ayez aucune base de données."
+                                    : "Il n'est pas possible de créer des bases de données pour ce serveur."}
                             </p>
                         )}
                         <Can action={'database.create'}>

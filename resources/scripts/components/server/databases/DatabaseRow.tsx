@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDatabase, faEye, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faDatabase, faInfoCircle, faTable, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import Modal from '@/components/elements/Modal';
 import { Form, Formik, FormikHelpers } from 'formik';
 import Field from '@/components/elements/Field';
@@ -162,11 +162,18 @@ export default ({ database, className }: Props) => {
                     <CopyOnClick text={database.username}>
                         <p css={tw`text-sm`}>{database.username}</p>
                     </CopyOnClick>
-                    <p css={tw`mt-1 text-2xs text-neutral-500 uppercase select-none`}>Username</p>
+                    <p css={tw`mt-1 text-2xs text-neutral-500 uppercase select-none`}>Nom d&apos;utilisateur</p>
                 </div>
                 <div css={tw`ml-8`}>
+                    <Button
+                        isSecondary
+                        css={tw`mr-2`}
+                        onClick={() => (window.location.href = 'https://phpmyadmin.nxhost.fr')}
+                    >
+                        <FontAwesomeIcon icon={faTable} />
+                    </Button>
                     <Button isSecondary css={tw`mr-2`} onClick={() => setConnectionVisible(true)}>
-                        <FontAwesomeIcon icon={faEye} fixedWidth />
+                        <FontAwesomeIcon icon={faInfoCircle} fixedWidth />
                     </Button>
                     <Can action={'database.delete'}>
                         <Button color={'red'} isSecondary onClick={() => setVisible(true)}>

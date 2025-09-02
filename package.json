@@ -133,8 +133,8 @@
         "clean": "cd public/assets && find . \\( -name \"*.js\" -o -name \"*.map\" \\) -type f -delete",
         "test": "jest",
         "lint": "eslint ./resources/scripts/**/*.{ts,tsx} --ext .ts,.tsx",
-        "watch": "cross-env NODE_ENV=development ./node_modules/.bin/webpack --watch --progress",
-        "build": "cross-env NODE_ENV=development ./node_modules/.bin/webpack --progress",
+        "watch": "NODE_OPTIONS=--openssl-legacy-provider cross-env NODE_ENV=development ./node_modules/.bin/webpack --watch --progress",
+        "build": "NODE_OPTIONS=--openssl-legacy-provider cross-env NODE_ENV=development ./node_modules/.bin/webpack --progress",
         "build:production": "yarn run clean && cross-env NODE_ENV=production ./node_modules/.bin/webpack --mode production",
         "serve": "yarn run clean && cross-env WEBPACK_PUBLIC_PATH=/webpack@hmr/ NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 8080 --public https://pterodactyl.test --hot"
     },
@@ -153,5 +153,6 @@
             "displayName": true,
             "fileName": true
         }
-    }
+    },
+    "packageManager": "yarn@1.22.19+sha512.ff4579ab459bb25aa7c0ff75b62acebe576f6084b36aa842971cf250a5d8c6cd3bc9420b22ce63c7f93a0857bc6ef29291db39c3e7a23aab5adfd5a4dd6c5d71"
 }
