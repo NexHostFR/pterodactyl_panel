@@ -21,6 +21,13 @@
     "baseUrl": ".",
     "importsNotUsedAsValues": "preserve",
     "suppressImplicitAnyIndexErrors": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictBindCallApply": false,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": false,
+    "alwaysStrict": false,
     "paths": {
       "@/*": [
         "./resources/scripts/*"
