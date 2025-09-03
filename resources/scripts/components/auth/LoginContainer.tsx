@@ -46,7 +46,7 @@ const LoginContainer = ({ history }: RouteComponentProps) => {
         login({ ...values, recaptchaData: token })
             .then((response) => {
                 if (response.complete) {
-                    // @ts-expect-error this is valid
+                    // @ts-ignore this is valid
                     window.location = response.intended || '/';
                     return;
                 }

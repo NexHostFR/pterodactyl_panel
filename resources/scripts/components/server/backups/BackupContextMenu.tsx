@@ -41,7 +41,7 @@ export default ({ backup }: Props) => {
         clearFlashes('backups');
         getBackupDownloadUrl(uuid, backup.uuid)
             .then((url) => {
-                // @ts-expect-error this is valid
+                // @ts-ignore this is valid
                 window.location = url;
             })
             .catch((error) => {

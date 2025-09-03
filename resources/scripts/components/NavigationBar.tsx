@@ -40,7 +40,7 @@ export default () => {
     const onTriggerLogout = () => {
         setIsLoggingOut(true);
         http.post('/auth/logout').finally(() => {
-            // @ts-expect-error this is valid
+            // @ts-ignore this is valid
             window.location = '/';
         });
     };

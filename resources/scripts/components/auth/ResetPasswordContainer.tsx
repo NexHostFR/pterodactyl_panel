@@ -32,7 +32,7 @@ export default ({ match, location }: RouteComponentProps<{ token: string }>) => 
         clearFlashes();
         performPasswordReset(email, { token: match.params.token, password, passwordConfirmation })
             .then(() => {
-                // @ts-expect-error this is valid
+                // @ts-ignore this is valid
                 window.location = '/';
             })
             .catch((error) => {
@@ -56,7 +56,7 @@ export default ({ match, location }: RouteComponentProps<{ token: string }>) => 
                     .min(8, 'Your new password should be at least 8 characters in length.'),
                 passwordConfirmation: string()
                     .required('Your new password does not match.')
-                    // @ts-expect-error this is valid
+                    // @ts-ignore this is valid
                     .oneOf([ref('password'), null], 'Your new password does not match.'),
             })}
         >

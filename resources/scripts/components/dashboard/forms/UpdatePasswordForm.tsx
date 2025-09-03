@@ -40,7 +40,7 @@ export default () => {
         clearFlashes('account:password');
         updateAccountPassword({ ...values })
             .then(() => {
-                // @ts-expect-error this is valid
+                // @ts-ignore this is valid
                 window.location = '/auth/login';
             })
             .catch((error) =>
