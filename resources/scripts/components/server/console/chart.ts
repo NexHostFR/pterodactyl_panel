@@ -70,8 +70,8 @@ const options: ChartOptions<'line'> = {
     },
 };
 
-function getOptions(opts?: DeepPartial<ChartOptions<'line'>> | undefined) {//ChartOptions<'line'>
-    return deepmerge(options, opts || {});
+function getOptions(opts?: DeepPartial<ChartOptions<'line'>> | undefined): ChartOptions<'line'> {
+    return deepmerge(options, opts || {}) satisfies ChartOptions<'line'>;
 }
 
 type ChartDatasetCallback = (value: ChartDataset<'line'>, index: number) => ChartDataset<'line'>;
