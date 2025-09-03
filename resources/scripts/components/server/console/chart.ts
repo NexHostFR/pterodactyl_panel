@@ -71,7 +71,7 @@ const options: ChartOptions<'line'> = {
 };
 
 function getOptions(opts?: DeepPartial<ChartOptions<'line'>> | undefined): ChartOptions<'line'> {
-    return deepmerge(options, opts || {});
+    return deepmerge(options, opts || {}) as ChartOptions<'line'>;
 }
 
 type ChartDatasetCallback = (value: ChartDataset<'line'>, index: number) => ChartDataset<'line'>;
@@ -115,25 +115,27 @@ function useChart(label: string, opts?: UseChartOptions) {
     const [data, setData] = useState(getEmptyData(label, opts?.sets || 1, opts?.callback));
 
     const push = (items: number | null | (number | null)[]) =>
-        setData((state) =>
-            merge(state, {
-                datasets: (Array.isArray(items) ? items : [items]).map((item, index) => ({
-                    ...state.datasets[index],
-                    data: state.datasets[index].data
-                        .slice(1)
-                        .concat(typeof item === 'number' ? Number(item.toFixed(2)) : item),
-                })),
-            })
+        setData(
+            (state) =>
+                merge(state, {
+                    datasets: (Array.isArray(items) ? items : [items]).map((item, index) => ({
+                        ...state.datasets[index],
+                        data: state.datasets[index].data
+                            .slice(1)
+                            .concat(typeof item === 'number' ? Number(item.toFixed(2)) : item),
+                    })),
+                }) as ChartData<'line'> // ⚡ Cast ici
         );
 
     const clear = () =>
-        setData((state) =>
-            merge(state, {
-                datasets: state.datasets.map((value) => ({
-                    ...value,
-                    data: Array(20).fill(-5),
-                })),
-            })
+        setData(
+            (state) =>
+                merge(state, {
+                    datasets: state.datasets.map((value) => ({
+                        ...value,
+                        data: Array(20).fill(-5),
+                    })),
+                }) as ChartData<'line'> // ⚡ Cast ici
         );
 
     return { props: { data, options }, push, clear };
