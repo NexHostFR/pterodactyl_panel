@@ -1,7 +1,10 @@
 import React from 'react';
-import { Trans, TransProps, useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'react-i18next';
 
-type Props = Omit<TransProps, 't'>;
+// ⚡ TransProps peut être générique ou non selon la version
+type MyTransProps = Parameters<typeof Trans>[0]; // récupère le type des props de Trans
+
+type Props = Omit<MyTransProps, 't'>;
 
 export default ({ ns, children, ...props }: Props) => {
     const { t } = useTranslation(ns);
