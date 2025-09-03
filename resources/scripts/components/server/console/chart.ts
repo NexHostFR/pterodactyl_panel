@@ -70,7 +70,7 @@ const options: ChartOptions<'line'> = {
     },
 };
 
-function getOptions(opts?: DeepPartial<ChartOptions<'line'>> | undefined): ChartOptions<'line'> {
+function getOptions(opts?: DeepPartial<ChartOptions<'line'>> | undefined) {//ChartOptions<'line'>
     return deepmerge(options, opts || {});
 }
 
