@@ -168,7 +168,7 @@ export default ({ database, className }: Props) => {
                     <Button
                         isSecondary
                         css={tw`mr-2`}
-                        onClick={() => (window.location.href = 'https://phpmyadmin.nxhost.fr')}
+                        onClick={() => window.open('https://phpmyadmin.nxhost.fr', '_blank')}
                     >
                         <FontAwesomeIcon icon={faTable} />
                     </Button>
