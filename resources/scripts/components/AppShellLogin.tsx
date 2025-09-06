@@ -11,7 +11,7 @@ export default function AppShellLogin({ children }: Props) {
             <div className='flex flex-1 flex-col items-center justify-center px-6 py-12 lg:px-8'>{children}</div>
             <div
                 className='hidden w-4/12 items-center justify-center bg-cover bg-center md:flex'
-                style={{ backgroundImage: `url(${foretImg.src})` }}
+                style={{ backgroundImage: `url(${foretImg})` }}
             >
                 <div className='text-center'>
                     <h2 className='mt-6 text-2xl font-bold text-gray-200'>
