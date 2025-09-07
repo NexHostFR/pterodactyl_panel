@@ -1,19 +1,22 @@
-import React from 'react';
-import classNames from 'classnames';
-import styles from '@/components/server/console/style.module.css';
+import React, { ReactNode } from 'react';
+// import styles from '@/components/server/console/style.module.css';
 
 interface ChartBlockProps {
     title: string;
-    legend?: React.ReactNode;
-    children: React.ReactNode;
+    legend?: ReactNode;
+    children: ReactNode;
 }
 
-export default ({ title, legend, children }: ChartBlockProps) => (
-    <div className={classNames(styles.chart_container, 'group')}>
-        <div className={'flex items-center justify-between px-4 py-2'}>
-            <h3 className={'font-header transition-colors duration-100 group-hover:text-gray-50'}>{title}</h3>
-            {legend && <p className={'text-sm flex items-center'}>{legend}</p>}
-        </div>
-        <div className={'z-10 ml-2'}>{children}</div>
-    </div>
-);
+const ChartBlock: React.FC<ChartBlockProps> = ({ title, legend, children }) => {
+    return (
+        <section className='group bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200'>
+            <header className='flex items-center justify-between px-4 py-3 border-b border-gray-700'>
+                <h3 className='font-mono text-lg text-gray-100 group-hover:text-blue-400 transition-colors'>{title}</h3>
+                {legend && <div className='flex items-center text-sm text-gray-400 gap-2'>{legend}</div>}
+            </header>
+            <div className='p-4 bg-gray-900 rounded-b-lg'>{children}</div>
+        </section>
+    );
+};
+
+export default ChartBlock;

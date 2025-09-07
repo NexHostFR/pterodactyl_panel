@@ -34,7 +34,7 @@ export default forwardRef<HTMLFormElement, Props>(({ title, ...props }, ref) => 
         {title && <h2 css={tw`text-3xl text-center text-neutral-100 font-medium py-4`}>{title}</h2>}
         <FlashMessageRender css={tw`mb-2 px-1`} />
         <Form {...props} ref={ref}>
-            <div css={tw`md:flex flex-col w-full bg-white shadow-lg rounded-lg p-6 mx-1`}>
+            <div css={tw`md:flex flex-col w-6/12 bg-white shadow-lg rounded-lg p-6 mx-auto`}>
                 <div css={tw`flex-none select-none mb-6 md:mb-0 self-center`}>
                     {/* <img src={'/assets/img/logo.png'} css={tw`block w-12 md:w-48 mx-auto`} /> */}
                 </div>

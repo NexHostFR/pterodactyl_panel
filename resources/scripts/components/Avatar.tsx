@@ -1,26 +1,56 @@
-import React from 'react';
-import BoringAvatar, { AvatarProps } from 'boring-avatars';
+import * as React from 'react';
 import { useStoreState } from '@/state/hooks';
+import { useInitials } from '@/hooks/use-initials';
 
-const palette = ['#FFAD08', '#EDD75A', '#73B06F', '#0C8F8F', '#587291'];
+// Wrapper de l'avatar
+function Avatar({ className = '', children, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+    return (
+        <div
+            data-slot='avatar'
+            className={`relative flex h-8 w-8 shrink-0 overflow-hidden rounded-full ${className}`}
+            {...props}
+        >
+            {children}
+        </div>
+    );
+}
 
-type Props = Omit<AvatarProps, 'colors'>;
+function AvatarImage({ className = '', ...props }: React.ImgHTMLAttributes<HTMLImageElement>) {
+    return <img data-slot='avatar-image' className={`aspect-square h-full w-full ${className}`} {...props} />;
+}
 
-const _Avatar = ({ variant = 'beam', ...props }: AvatarProps) => (
-    <BoringAvatar colors={palette} variant={variant} {...props} />
-);
+function AvatarFallback({
+    className = '',
+    children,
+    ...props
+}: React.HTMLAttributes<HTMLDivElement> & { children?: React.ReactNode }) {
+    return (
+        <div
+            data-slot='avatar-fallback'
+            className={`bg-neutral-700 text-white flex h-full w-full items-center justify-center rounded-full ${className}`}
+            {...props}
+        >
+            {children}
+        </div>
+    );
+}
 
-const _UserAvatar = ({ variant = 'beam', ...props }: Omit<Props, 'name'>) => {
-    const uuid = useStoreState((state) => state.user.data?.uuid);
+// --- Avatar utilisateur avec initiales ---
+export const UserAvatar = () => {
+    const user = useStoreState((state) => state.user.data);
+    const getInitials = useInitials();
 
-    return <BoringAvatar colors={palette} name={uuid || 'system'} variant={variant} {...props} />;
+    const initials =
+        user?.name_first && user?.name_last
+            ? getInitials(`${user.name_first} ${user.name_last}`)
+            : getInitials(user?.username || 'System User');
+
+    return (
+        <Avatar>
+            {/* Si on avait une image : <AvatarImage src={user.avatarUrl} /> */}
+            <AvatarFallback>{initials}</AvatarFallback>
+        </Avatar>
+    );
 };
-
-_Avatar.displayName = 'Avatar';
-_UserAvatar.displayName = 'Avatar.User';
-
-const Avatar = Object.assign(_Avatar, {
-    User: _UserAvatar,
-});
-
 export default Avatar;
+export { AvatarImage, AvatarFallback };
