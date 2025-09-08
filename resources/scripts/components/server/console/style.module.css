@@ -31,30 +31,40 @@
     }
 
     & > .container {
-        @apply rounded-t p-1 sm:p-2 bg-black min-h-[16rem] flex-1 font-mono text-sm;
+        @apply rounded-t p-1 sm:p-1 bg-gradient-to-b from-gray-900 via-gray-900 to-black min-h-[16rem] flex-1 font-mono text-sm text-gray-100;
 
         & #terminal {
             @apply h-full;
 
+            /* Scrollbar custom */
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+
             &::-webkit-scrollbar-track {
-                @apply w-2;
+                @apply bg-gray-800;
             }
 
             &::-webkit-scrollbar-thumb {
-                @apply bg-gray-900;
+                @apply bg-cyan-600 rounded-full hover:bg-cyan-400 transition-colors;
             }
         }
     }
 
     & .command_icon {
-        @apply flex items-center top-0 left-0 absolute z-10 select-none h-full px-3 transition-colors duration-100;
+        @apply flex items-center top-0 left-0 absolute z-10 select-none h-full px-3 transition-colors duration-200 text-cyan-400;
     }
 
     & .command_input {
         @apply relative bg-gray-900 px-2 text-gray-100 pl-10 pr-4 py-2 w-full font-mono text-sm sm:rounded-b;
         @apply focus:ring-0 outline-none focus-visible:outline-none;
-        @apply border-0 border-b-2 border-transparent transition-colors duration-100;
-        @apply active:border-cyan-500 focus:border-cyan-500;
+        @apply border-0 border-b-2 border-transparent transition-all duration-200;
+        @apply active:border-cyan-400 focus:border-cyan-500;
+
+        /* Glow effect */
+        &:focus {
+            box-shadow: 0 0 6px theme('colors.cyan.500');
+        }
     }
 }
 
